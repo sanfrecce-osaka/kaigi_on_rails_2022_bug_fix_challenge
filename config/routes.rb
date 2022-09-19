@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resource :home, only: :show
 
   root to: 'homes#show'
+
+  mount LetterOpenerWeb::Engine, at: 'letter_opener' if Rails.env.development?
 end
