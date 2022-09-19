@@ -33,5 +33,15 @@ module KaigiOnRails2022BugFixChallenge
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.generators do |g|
+      g.helper false
+      g.jbuilder false
+      g.test_framework :rspec, view_specs: false, routing_specs: false
+    end
+
+    config.generators.after_generate do |files|
+      system('bundle exec rubocop --auto-correct-all ' + files.join(' '), exception: true)
+    end
   end
 end
