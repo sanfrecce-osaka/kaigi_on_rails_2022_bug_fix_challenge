@@ -18,4 +18,9 @@ class ApplicationController < ActionController::Base
     in ->(corporation) { corporation.premium? } then projects_path
     end
   end
+
+  def append_info_to_payload(payload)
+    super
+    payload[:account_id] = current_account&.id
+  end
 end
