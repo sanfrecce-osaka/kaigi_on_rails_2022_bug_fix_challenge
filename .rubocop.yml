@@ -14,5 +14,9 @@ AllCops:
     - 'config/**/*'
     - 'db/schema.rb'
 
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/20221010105020_devise_create_accounts.rb'
+
 Style/Documentation:
   Enabled: false
