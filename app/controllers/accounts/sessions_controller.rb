@@ -10,9 +10,14 @@ module Accounts
     # end
 
     # POST /resource/sign_in
-    # def create
-    #   super
-    # end
+    def create
+      if account_signed_in? && current_account.corporation.rejected?
+        sign_out :account
+        redirect_to new_account_session_path, alert: '退会済のため、サービスを利用できません' and return
+      end
+
+      super
+    end
 
     # DELETE /resource/sign_out
     # def destroy
