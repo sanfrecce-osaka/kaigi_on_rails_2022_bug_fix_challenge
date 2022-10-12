@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :accounts
+  devise_for :accounts, controllers: {
+    sessions: 'accounts/sessions'
+  }
   resources :tasks
   resources :projects
   resource :home, only: :show
