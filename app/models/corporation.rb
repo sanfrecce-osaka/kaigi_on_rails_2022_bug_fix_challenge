@@ -5,4 +5,5 @@ class Corporation < ApplicationRecord
   has_many :projects, dependent: :destroy
 
   enum :status, { reviewed: 'reviewed', approved: 'approved', rejected: 'rejected' }, default: :reviewed
+  enum :plan, { free: 'free', premium: 'premium' }, default: :free
 end
