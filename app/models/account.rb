@@ -7,4 +7,6 @@ class Account < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :corporation
+
+  before_validation -> { self.corporation = Corporation.create!(name: '株式会社Ruby') }, if: -> { corporation.nil? }
 end
