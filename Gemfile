@@ -51,6 +51,7 @@ gem 'sassc-rails'
 gem 'bootstrap'
 gem 'sentry-rails'
 gem 'sentry-ruby'
+gem 'lograge'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
