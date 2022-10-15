@@ -1,8 +1,14 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include Banken
+
   before_action :configure_sentry
   before_action :authenticate_account!, unless: -> { params[:controller].start_with?(/admin/) }
+
+  def banken_user
+    current_account
+  end
 
   def configure_sentry
     Sentry.set_user(id: current_account.id, email: current_account.email) if account_signed_in?
