@@ -38,7 +38,12 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def build_resource(hash = {})
+    super
+    resource.build_corporation(hash.present? ? corporation_params : {})
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -59,4 +64,10 @@ class Accounts::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def corporation_params
+    params.require(:account).permit(:corporation_name)
+  end
 end

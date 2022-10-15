@@ -8,5 +8,5 @@ class Account < ApplicationRecord
 
   belongs_to :corporation
 
-  before_validation -> { self.corporation = Corporation.create!(name: '株式会社Ruby') }, if: -> { corporation.nil? }
+  delegate :corporation_name, to: :corporation
 end

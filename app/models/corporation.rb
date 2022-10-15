@@ -6,4 +6,6 @@ class Corporation < ApplicationRecord
 
   enum :status, { reviewed: 'reviewed', approved: 'approved', rejected: 'rejected' }, default: :reviewed
   enum :plan, { free: 'free', premium: 'premium' }, default: :free
+
+  alias_attribute :corporation_name, :name
 end
