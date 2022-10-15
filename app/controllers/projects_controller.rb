@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
+  before_action :authorize!
   before_action :set_project, only: %i[show edit update destroy]
 
   # GET /projects or /projects.json
@@ -55,6 +56,12 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def authorize!(record = nil)
+    super
+  rescue Banken::NotAuthorizedError
+    redirect_to tasks_path, alert: 'プロジェクト機能はプレミアムプランでのみ利用できます'
   end
 
   private
