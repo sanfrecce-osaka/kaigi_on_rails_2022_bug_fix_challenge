@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :accounts, controllers: {
     sessions: 'accounts/sessions',
     registrations: 'accounts/registrations',
+    confirmations: 'accounts/confirmations',
   }
   resources :tasks
   resources :projects
