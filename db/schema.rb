@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_12_124739) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_15_102100) do
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,6 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_12_124739) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "plan", default: "free", null: false
+    t.datetime "usage_started_at"
   end
 
   create_table "projects", force: :cascade do |t|
