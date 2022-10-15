@@ -13,7 +13,10 @@ class Accounts::ConfirmationsController < Devise::ConfirmationsController
 
   # GET /resource/confirmation?confirmation_token=abcdef
   def show
-    super { |account| account.corporation.approved! }
+    super do |account|
+      account.corporation.assign_attributes(status: :approved, usage_started_at: Time.current.beginning_of_month.next_month)
+      account.corporation.save!
+    end
   end
 
   # protected
