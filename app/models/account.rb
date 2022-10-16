@@ -9,4 +9,8 @@ class Account < ApplicationRecord
   belongs_to :corporation
 
   delegate :corporation_name, to: :corporation
+
+  def can_use_service?
+    corporation.already_usage_started?
+  end
 end

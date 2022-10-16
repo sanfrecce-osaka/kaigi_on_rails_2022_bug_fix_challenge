@@ -8,4 +8,8 @@ class Corporation < ApplicationRecord
   enum :plan, { free: 'free', premium: 'premium' }, default: :free
 
   alias_attribute :corporation_name, :name
+
+  def already_usage_started?
+    usage_started_at <= Time.current
+  end
 end
